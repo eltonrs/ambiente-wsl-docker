@@ -266,6 +266,8 @@ https://github.com/timvisee/docker-compose-mssql
 
 https://docs.microsoft.com/pt-br/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash
 
+https://docs.docker.com/compose/reference/
+
 Erro no Debian:
 
 https://github.com/microsoft/WSL/discussions/4872
