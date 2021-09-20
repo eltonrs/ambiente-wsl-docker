@@ -8,13 +8,13 @@ Premissas
 
 ## 1 - Configurações iniciais do WSL
 
-### Habilitar o WSL
+### 1.1 - Habilitar o WSL
 
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
 
-### Habilitar a virtualização
+### 1.2 - Habilitar a virtualização
 
 ```PowerShell
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
@@ -22,7 +22,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 REINICIAR O PC!!!
 
-### Instalar a atualização do WSL2
+### 1.3 - Instalar a atualização do WSL2 (necessário)
 
 ```powershell
 wsl --update
@@ -35,13 +35,13 @@ REINICIAR O WSL!!!
 wsl --shutdown
 ```
 
-### Versão 2 do WSL como padrão
+### 1.4 - Versão 2 do WSL como padrão
 
 ```powershell
 wsl --set-default-version 2
 ```
 
-### Arquivo .wslconfig
+### 1.5 - Arquivo .wslconfig
 
 Na pasta raiz do usuário atual, criar arquivo um arquivo denoninado `.wslconfig`.
 
@@ -54,7 +54,7 @@ processors=1 # Makes the WSL 2 VM use two virtual processors
 swap=2GB
 ```
 
-### Verificar instalação do WSL
+### 1.6 - Verificar instalação do WSL
 
 ```powershell
 wsl --status
@@ -62,7 +62,7 @@ wsl --status
 
 # 2 - Instalação do Linux
 
-### Verificar quais distros linux estão disponível de forma online
+### 2.1 - Verificar quais distros linux estão disponível de forma online
 
 ```powershell
 wsl --list --online
@@ -82,9 +82,7 @@ O resultado será algo como esse:
   Ubuntu-20.04    Ubuntu 20.04 LTS
 ```
 
-_O * antes do nome indica a distro padrão_
-
-### Instalar uma distro.
+### 2.2 - Instalar uma distro.
 
 Nesse exemplo será instalada a distro do Debian. Para isso, atentemos para o nome (NAME) da distro e então executamos o seguinte comando:
 
@@ -97,24 +95,82 @@ Após o download e instalação da distro, será aberto o prompt de comando, já
 
 PRONTO!!! Linux instalado.
 
-Para conferir a distro em execução, executar o comando:
+2.3 - Para conferir a distro em execução, executar o comando:
 
 ```powershell
 wsl --list --verbose
 ```
 
-Resultado:
+_O * antes do nome indica a distro padrão. Para alterar a versão para a distro que que acabou de instalar, execute o seguinte comando:_
+
+```powershell
+wsl --set-default Debian
+```
+
+Execute novamente o comando do item 2.3. Resultado:
 
 ```text
   NAME      STATE           VERSION
 * Debian    Running         1
 ```
 
+# 3 - Acessando o Linux
+
+Basicamente, há duas formas de acessar o Linux:
+
+## 3.1 - PowerShell do Windows
+
+Com a distro padrão configurada, basta executar o seguinte comando:
+
+```powershell
+wsl
+```
+
+O Linux será inicializado e o prompt de comando do PowerShell será alternado para o bash do Linux:
+![image](https://user-images.githubusercontent.com/18177981/134011730-01a3b6f6-1d56-4df5-a9c5-7af050990174.png)
+
+## 3.2 - Janela de comando própria
+
+Com o Windows Terminal aberto, basta acessar o menu de perfis e clicar no perfil desejado:
+![image](https://user-images.githubusercontent.com/18177981/134012050-513b2997-fa46-4454-aa8b-034d01001dfd.png)
+
+Será criada uma aba com o bash do Linux:
+![image](https://user-images.githubusercontent.com/18177981/134012180-e64eaaa6-dacb-4bae-af26-b6bea4a12ddc.png)
+
+## 3.3 - Para ambos os modos de acesso
+
+Para sair do bash do Linux, basta executar:
+
+```sh
+exit
+```
+
+Será feito o logout. Nesse momento, o Linux continua em execução e consumindo recursos:
+![image](https://user-images.githubusercontent.com/18177981/134013005-e8fe536d-ff30-4880-b55d-d4c2e82ae88e.png)
+
+Para *desligar* o Linux, basta executar:
+
+```powershell
+wsl --shutdown
+```
+
+## 3.4 - Acessando arquivos entre Windows x Linux
+
 Como a instalação foi de uma das distros fornecidas pela Microsoft, as devidas configurações de rede já estão corretas, ou seja, a distro já está com acesso à internet e à rede local. Além disso, a integração entre os sistemas de arquivo também está devidamente configurada:
 
-- Para acessar arquivos do Linux através do Windows Explorer, basta estar no diretório do Linux desejado e executar o comando `explorer.exe .`. Será aberta uma janela do Windows Explorer exibindo o diretório do Linux através do mapeamento de rede que há entre o Windows (host) que a distro (quest).
+### 3.4.1 - Arquivos do Linux no Windows
 
-- Para acessar os arquivos do Windows dentro do Linux, basta acessar quaisquer dos pontos de montagens das unidades do Windows. Para visualizar as unidades do Windows montadas no Linux, execute o comando abaixo no terminal do Linux:
+Para acessar arquivos do Linux através do Windows (através do Windows Explorer), basta estar no diretório do Linux desejado e executar o comando `explorer.exe .`. Será aberta uma janela do Windows Explorer exibindo o diretório do Linux através do mapeamento de rede que há entre o Windows (host) que a distro (quest). Exemplo:
+
+No Linux:
+![image](https://user-images.githubusercontent.com/18177981/134013876-05de6949-dfbf-432a-918a-ee56b6b6f5d2.png)
+
+No Windows:
+![image](https://user-images.githubusercontent.com/18177981/134013923-69d1d534-b5ef-4108-ba10-5ecdf2f5ad08.png)
+
+### 3.4.2 - Arquivos do Windows no Linux
+
+Para acessar os arquivos do Windows dentro do Linux, basta acessar quaisquer dos pontos de montagens das unidades do Windows. Para visualizar as unidades do Windows montadas no Linux, execute o comando abaixo no terminal do Linux:
 
 ```sh
 ls -l /mnt/
@@ -130,11 +186,36 @@ drwxrwxrwx 1 root root 4096 Sep 15 14:16 d
 
 Nesse caso, as unidades C: e D: do Windows estão montadas no ambiente Linux. A partir daqui, basta navegar nas pastas do Windows.
 
+Exemplo: **acessando a pasta _home_ do usuário do Windows.**
+
+Para isso, navegue até a pasta home do usuário do Windows a partir do ponto de montagem da unidade na qual o Windows foi instalada, nesse caso, no C:.
+![image](https://user-images.githubusercontent.com/18177981/134014777-05138a11-3ecd-44e0-8176-50419e38f0a7.png)
+
+Será exibido algo assim:
+![image](https://user-images.githubusercontent.com/18177981/134014889-431614d7-a1c6-4543-98d5-0d9d7cd90b4a.png)
+
+# 4 - Instalação do Docker
+
+A instalação do Docker será feita na distro Linux que acabou de instalar, nesse caso, será necessário acessar o ambiente Linux.
+
+Uma vez dentro do prompt de comando da distro Linux, seguir os tutoriais abaixo:
+
+Instalação Docker para distro Debian: [link](https://docs.docker.com/engine/install/debian/).
+
+Instalação Docker Compose para Linux: [link](https://docs.docker.com/compose/install/#install-compose-on-linux-systems).
+
 ## Bônus
 
-### (WIP) Windows Terminal - Instalação e configuração
+### 1 (WIP) Windows Terminal - Instalação e configuração
+
+### 2 Desinstalar o Hyper-V (CUIDADO!!!)
+
+Como o WSL/WSL2 utiliza uma arquitetura própria, o Hyper-V, que geralmente está habilitado para funcionamento correto de VMs (VirtualBox e/ou VM Ware), pode ser desabilitado. Para isso, navegue até _Ativar ou desativar recursos do Windows_, procure pelo **Hyper-V**, desmarque-o e clique em **Ok**.
+![image](https://user-images.githubusercontent.com/18177981/134016357-2aa7b06f-ec80-4af2-aa7f-cc6257f84d4b.png)
 
 ## Fontes
+
+https://github.com/codeedu/wsl2-docker-quickstart
 
 https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-2---check-requirements-for-running-wsl-2
 
