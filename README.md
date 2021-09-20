@@ -124,8 +124,8 @@ O resultado será algo assim:
 
 ```sh
 total 0
-drwxrwxrwx 1 root root  512 Sep 17 14:16 c
-drwxrwxrwx 1 root root 4096 Sep 17 14:16 d
+drwxrwxrwx 1 root root  512 Sep 15 14:16 c
+drwxrwxrwx 1 root root 4096 Sep 15 14:16 d
 ```
 
 Nesse caso, as unidades C: e D: do Windows estão montadas no ambiente Linux. A partir daqui, basta navegar nas pastas do Windows.
