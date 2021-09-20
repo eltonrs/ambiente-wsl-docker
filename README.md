@@ -221,3 +221,7 @@ https://github.com/codeedu/wsl2-docker-quickstart
 https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-2---check-requirements-for-running-wsl-2
 
 https://jayfuconsulting.wordpress.com/2020/11/14/sql-server-2019-docker-wsl-2/
+
+https://docs.docker.com/compose/install/#install-compose-on-linux-systems
+
+https://docs.microsoft.com/pt-br/windows/wsl/about
