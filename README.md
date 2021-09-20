@@ -263,3 +263,9 @@ https://docs.docker.com/compose/install/#install-compose-on-linux-systems
 https://docs.microsoft.com/pt-br/windows/wsl/about
 
 https://github.com/timvisee/docker-compose-mssql
+
+https://docs.microsoft.com/pt-br/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash
+
+Erro no Debian:
+
+https://github.com/microsoft/WSL/discussions/4872
