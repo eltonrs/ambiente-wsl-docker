@@ -202,7 +202,43 @@ Uma vez dentro do prompt de comando da distro Linux, seguir os tutoriais abaixo:
 
 Instalação Docker para distro Debian: [link](https://docs.docker.com/engine/install/debian/).
 
+Após a instalação, checar se o serviço do Docker está em execução. Para isso, executar:
+
+```sh
+sudo service docker status
+```
+
+Deve retornar algo como:
+```text
+Docker is running.
+```
+
+Se retornar algo como:
+```text
+Docker is not running ... failed!
+```
+
+Basta executar o comando abaixo para levantar o serviço do Docker:
+
+```sh
+sudo service docker start
+```
+
 Instalação Docker Compose para Linux: [link](https://docs.docker.com/compose/install/#install-compose-on-linux-systems).
+
+Como o Docker-Compose instalado, basta navegar até o diretório que está o arquivo docker*.yml e executar o comando:
+
+```sh
+docker-compose up -d
+```
+
+Será exibido algo como:
+```text
+Starting mongo-server       ... done
+Starting sqlserver-database ... done
+Starting rabbitmq-server    ... done
+Starting redis-server       ... done
+```
 
 ## Bônus
 
