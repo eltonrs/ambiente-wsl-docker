@@ -211,6 +211,7 @@ Instalação Docker Compose para Linux: [link](https://docs.docker.com/compose/i
 ### 2 Desinstalar o Hyper-V (CUIDADO!!!)
 
 Como o WSL/WSL2 utiliza uma arquitetura própria, o Hyper-V, que geralmente está habilitado para funcionamento correto de VMs (VirtualBox e/ou VM Ware), pode ser desabilitado. Para isso, navegue até _Ativar ou desativar recursos do Windows_, procure pelo **Hyper-V**, desmarque-o e clique em **Ok**.
+
 ![image](https://user-images.githubusercontent.com/18177981/134016357-2aa7b06f-ec80-4af2-aa7f-cc6257f84d4b.png)
 
 ## Fontes
