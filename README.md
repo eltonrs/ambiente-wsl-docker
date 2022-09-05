@@ -242,13 +242,26 @@ Starting redis-server       ... done
 
 ## Bônus
 
-### 1 (WIP) Windows Terminal - Instalação e configuração
+### 1 Otimizando o espaço em disco
 
-### 2 Desinstalar o Hyper-V (CUIDADO!!!)
+cd C:\Users\<nome do usuário>\AppData\Local\Packages\TheDebianProject.DebianGNULinux_76v4gfsz19hv4\
+
+**TheDebianProject.DebianGNULinux_76v4gfsz19hv4** para distribuições Debian
+**CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc** para distribuições Ubuntu
+
+```powershell
+optimize-vhd -Path .\ext4.vhdx -Mode full
+```
+
+Ao longo do tempo, a 
+
+### 2 Desinstalar o Hyper-V (CUIDADO!!! Não faça isso se deseja manipular as VMs manualmente)
 
 Como o WSL/WSL2 utiliza uma arquitetura própria, o Hyper-V, que geralmente está habilitado para funcionamento correto de VMs (VirtualBox e/ou VM Ware), pode ser desabilitado. Para isso, navegue até _Ativar ou desativar recursos do Windows_, procure pelo **Hyper-V**, desmarque-o e clique em **Ok**.
 
 ![image](https://user-images.githubusercontent.com/18177981/134016357-2aa7b06f-ec80-4af2-aa7f-cc6257f84d4b.png)
+
+### 3 (WIP) Windows Terminal - Instalação e configuração
 
 ## Fontes
 
